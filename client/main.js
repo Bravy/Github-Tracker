@@ -29,6 +29,10 @@ Template.body.events({
     // Clear form
     target.text.value = '';
   },
+
+'click .delete'(){
+	  Tasks.remove(this._id);
+	},
 });
 
 

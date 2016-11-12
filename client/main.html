@@ -1,10 +1,21 @@
 <body>
-  <div class="container">
+</body>
+ 
+<template name="task">
+ <li class="list">
+    <button class="delete">&times;</button>
+ 
+   <span class="text"><a href="/tasktimer/{{this._id}}">{{text}}</a></span>
+  </li>
+</template>
+
+<template name="taskList">
+<div class="container">
     <header>
       <h1>Todo List</h1> {{>loginButtons}}
        {{#if currentUser}}
         <form class="new-task">
-          <input type="text" name="text" placeholder="Type to add new tasks" />
+          <input type="text" name="text" placeholder="Add your issues" />
         </form>
       {{/if}}
     </header>
@@ -14,22 +25,14 @@
         {{> task}}
       {{/each}}
     </ul>
-  </div>
-</body>
- 
-<template name="task">
- <li class="{{#if checked}}checked{{/if}}">
-    <button class="delete">&times;</button>
- 
-    <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
- 
-    <span class="text">{{text}}</span>
-  </li>
+</div>
 </template>
-
 <template name="timeTrackerForm">
 	<div class="panel time-track">
 		<span class='input-label'>{{ elapsedTime }}</span>
 		<button id="btnToggleTrackingStatus">{{ trackingButtonLabel }}</button>
 	</div>
+</template>
+<template name ="tasktimer">
+<p> Gaurav gnda hai... </p>
 </template>

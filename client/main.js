@@ -1,14 +1,14 @@
 import { Template } from 'meteor/templating';
 import { Mongo } from 'meteor/mongo';
 import { Accounts } from 'meteor/accounts-github';
-Template.body.helpers({
+Template.taskList.helpers({
   tasks()
     {
 	return Tasks.find({}, {sort:{ createdAt: -1}}); 
     },
 });
 
-Template.body.events({
+Template.taskList.events({
   'submit .new-task'(event) {
     // Prevent default browser form submit
     event.preventDefault();

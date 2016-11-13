@@ -1,16 +1,16 @@
 <body>
 </body>
- 
+
 <template name="task">
  <li class="list">
     <button class="delete">&times;</button>
- 
-   <span class="text"><a href="/tasktimer/{{this._id}}">{{text}}</a></span>
+
+   <span class="text"><a href="/tasktimer/{{this._id}}/{{text}}">{{text}}</a></span>
   </li>
 </template>
 
 <template name="taskList">
-<div class="container">
+  <div class="container">
     <header>
       <h1>Todo List</h1> {{>loginButtons}}
        {{#if currentUser}}
@@ -19,20 +19,30 @@
         </form>
       {{/if}}
     </header>
- 
+
     <ul>
       {{#each tasks}}
         {{> task}}
       {{/each}}
     </ul>
-</div>
+  </div>
 </template>
+
 <template name="timeTrackerForm">
 	<div class="panel time-track">
 		<span class='input-label'>{{ elapsedTime }}</span>
 		<button id="btnToggleTrackingStatus">{{ trackingButtonLabel }}</button>
 	</div>
 </template>
+
 <template name ="tasktimer">
-<p> Gaurav gnda hai... </p>
+  <div class="container">
+    <h1> Timer </h1>
+    <h2> {{text}}</h2>
+    <p id ="post"> {{postId}}</p>
+    <h1 id="time"><time>00:00:00</time></h1>
+    <button class="start">start</button>
+    <button class="stop">stop</button>
+    <button class="clear">clear</button>
+  </div>
 </template>

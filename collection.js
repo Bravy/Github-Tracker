@@ -1,4 +1,4 @@
-Tasks = new Mongo.Collection('tasks');
+Tasks = new Meteor.Collection('tasks');
 
 Tasks.allow({
   insert() {return true;},

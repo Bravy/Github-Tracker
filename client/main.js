@@ -1,7 +1,3 @@
-import { Template } from 'meteor/templating';
-import { Mongo } from 'meteor/mongo';
-import { Accounts } from 'meteor/accounts-github';
-
 //timer functions
 
 Template.taskList.helpers({
@@ -22,6 +18,9 @@ Template.taskList.events({
       createdAt: new Date(), // current time
       owner: Meteor.userId(),
       username: Meteor.user().username,
+      hours: "00",
+      minutes: "00",
+      seconds: "00"
     });
 
     target.text.value = '';

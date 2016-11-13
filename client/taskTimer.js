@@ -10,8 +10,8 @@ var add = function() {
     }
   }
 
-  $('#time').html((hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds));
-  timer();
+  $('#time')[0].textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+ timer();
 }
 
 var timer = function() {
@@ -25,25 +25,20 @@ Template.taskTimer.events({
 
   'click .stop': function() {
     clearTimeout(t);
-    var time = $('#time').html();
+    var time = $('#time')[0].textContent;
     timeArray= time.split(':');
-    hours = timeArray[0];
-    minutes = timeArray[1];
-    seconds= timeArray[2];
-    postId = $('#post').html();
+    console.log(timeArray);
+    ho = timeArray[0];
+    console.log(ho);
+    min = timeArray[1];
+    sec= timeArray[2];
+    postId = $.trim($('#post').text());
     console.log(postId);
-
-    Tasks.update(
-      {_id: postId },
-      {$set:{hours: hours }},
-      {$set:{minutes: minutes}},
-      {$set:{seconds: seconds}},
-    );
-    console.log(hours);
+    Tasks.update(postId,{$set:{hours:ho,minutes:min,seconds:sec}});
    },
 
  'click .clear' : function(){
-   $('#time').html("00:00:00");
+   $('#time')[0].textContent = "00:00:00";
    clearTimeout(t);
    seconds = 0; minutes = 0; hours = 0;
   }

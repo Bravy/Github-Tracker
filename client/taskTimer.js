@@ -18,6 +18,38 @@ var timer = function() {
   t = setTimeout( add, 1000);
 }
 
+Template.taskTimer.helpers({
+   'text': function(){
+    postId = FlowRouter.getParam("postId");
+    console.log(postId);
+    task = Tasks.findOne(postId);
+    console.log("seconds  " + task);
+    return task.text;
+    },
+   'seconds': function(){
+    postId = FlowRouter.getParam("postId");
+    console.log(postId);
+    task = Tasks.findOne(postId);
+    console.log("seconds  " + task);
+    return task.seconds;
+    },
+
+   'minutes': function(){
+    postId = FlowRouter.getParam("postId");
+    console.log(postId);
+    task = Tasks.findOne(postId);
+    console.log("seconds  " + task);
+    return task.minutes;
+    },
+   'hours': function(){
+    postId = FlowRouter.getParam("postId");
+    console.log(postId);
+    task = Tasks.findOne(postId);
+    console.log("seconds  " + task);
+    return task.hours;
+    }
+});
+
 Template.taskTimer.events({
   'click .start' : function(){
     timer();
@@ -41,5 +73,13 @@ Template.taskTimer.events({
    $('#time')[0].textContent = "00:00:00";
    clearTimeout(t);
    seconds = 0; minutes = 0; hours = 0;
-  }
+  },
+
+'click .complete': function(){
+  seconds = 0; minutes = 0; hours = 0;
+   postId = FlowRouter.getParam("postId");
+   Tasks.update(postId,{$set:{complete:"true"}});
+   FlowRouter.go('/');
+}
+
 });

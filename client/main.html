@@ -2,26 +2,42 @@
 </body>
 
 <template name="taskData">
-    <li class="list">
+    <li class="list view issue-item">
       <button class="delete">&times;</button>
-      <span class="text"><a href="/tasktimer/{{this._id}}/{{text}}">{{text}}</a></span>
+            {{#if complete}}
+            <span class="text complete" style="text-decoration:line-through;"><a href="/tasktimer/{{this._id}}">{{text}}</a></span>
+            <span> {{hrs}}:{{min}}:{{sec}}</span>
+            {{else}}
+              <span class="text"><a href="/tasktimer/{{this._id}}">{{text}}</a></span>
+              {{/if}}
+
     </li>
 </template>
 
 <template name="taskList">
   <div class="container">
-    <header>
-      <h1>Todo List</h1> {{>loginButtons}}
+    <header class="yellow-header">
+      <div class="top-bar">
+      <h1 class="branding">gitTrack</h1>
+      <div class="login">{{>loginButtons}}</div>
+    </div>
+      <div class="form-wrapper">
       {{#if currentUser}}
       <form class="new-task">
-        <input type="text" name="text" placeholder="Add your issues" />
+        <div class="subtitle">What's your issue?</div>
+        <input class="issue-input" type="text" name="text" placeholder="something goes here . . ." />
       </form>
+      {{else}}
+      <div class="subtitle" style="width:400px; font-size:32px; margin:auto;">Landing page, coming soon...</div>
       {{/if}}
+    </div>
     </header>
+    <div class="issue-list">
     <ul>
       {{#each tasks}}
         {{> taskData}}
       {{/each}}
     </ul>
+  </div>
   </div>
 </template>

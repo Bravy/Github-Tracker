@@ -1,73 +1,87 @@
-body {
-  font-family: sans-serif;
-  background-color: #315481;
-  background-image: linear-gradient(to bottom, #315481, #918e82 100%);
-  background-attachment: fixed;
- 
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
- 
+/*body{
+  margin:0;
   padding: 0;
-  margin: 0;
- 
-  font-size: 14px;
+  background-image: url("");
 }
- 
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  min-height: 100%;
-  background: white;
+a{
+  text-decoration: none;
+  color: black;
 }
- 
-header {
-  background: #d2edf4;
-  background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
-  padding: 20px 15px 15px 15px;
-  position: relative;
+#login-buttons a, .accounts-dialog a {
+  text-decoration: none;
+  color: #596595;
 }
- 
+
+#login-dropdown-list {
+    position: absolute;
+    top: 10px;
+    left: -150px;
+  }
+
+.login{
+  font-size: 25px;
+  margin-top: 50px;
+  margin-right: 50px;
+  float: right;
+  display: inline-block;
+}
 #login-buttons {
   display: block;
 }
- 
-h1 {
-  font-size: 1.5em;
-  margin: 0;
-  margin-bottom: 10px;
-  display: inline-block;
-  margin-right: 1em;
+.front{
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-color: white;
 }
- 
+
+.view{
+  display: block;
+  width:300px;
+  margin-left: 45%;
+  background-color: none;
+  text-decoration: none;
+}
+
+.complete{
+ margin-left:40%;
+ color: red;
+}
 form {
   margin-top: 10px;
   margin-bottom: -10px;
-  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
- 
+
 .new-task input {
-  box-sizing: border-box;
+  width: 300px;
   padding: 10px 0;
+  margin-top: 200px;
+  color: black;
   background: transparent;
-  border: none;
-  width: 100%;
-  padding-right: 80px;
+  border-bottom:1px solid black;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin-right:auto;
+  margin-left: auto;
+  margin-bottom: 50px;
   font-size: 1em;
 }
- 
+
 .new-task input:focus{
   outline: 0;
 }
- 
+
 ul {
-  margin: 0;
-  padding: 0;
-  background: white;
+  margin: auto;
+  padding: 2px;
+  display: block;
+  background: transparent;
 }
- 
+
 .delete {
   float: right;
   font-weight: bold;
@@ -76,50 +90,199 @@ ul {
   border: none;
   position: relative;
 }
- 
+
 li {
-  position: relative;
   list-style: none;
   padding: 15px;
   border-bottom: #eee solid 1px;
 }
- 
+
 li .text {
   margin-left: 10px;
 }
- 
-li.checked {
-  color: #888;
+.heading{
+  color:#596595;
+  font-size: 60px;
+  margin-left: 47%;
+  margin-top: 30px;
 }
- 
-li.checked .text {
-  text-decoration: line-through;
+.subhead{
+  color: #333;
 }
- 
-li.private {
-  background: #eee;
-  border-color: #ddd;
+.issue{
+  font-size: 40px;
+  color: #333;
+  font-weight: bold;
+  margin-left: 42%;
 }
- 
-header .hide-completed {
-  float: right;
+.time{
+  font-size: 150px;
+  margin-left: 45%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: #333;
 }
- 
-.toggle-private {
-  margin-left: 5px;
+.btn{
+  margin-left: 57%;
+
 }
- 
+.start{
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  margin-right:20px;
+}
+.stop{
+  border-radius: 50%;
+  height: 60px;
+  margin-right:20px;
+  width: 60px;
+}
+.clear{
+  border-radius: 50%;
+  height: 60px;
+  margin-right:20px;
+  width: 60px;
+}
+
 @media (max-width: 600px) {
   li {
     padding: 12px 15px;
   }
- 
+
   .search {
     width: 150px;
     clear: both;
   }
- 
+
   .new-task input {
     padding-bottom: 5px;
   }
 }
+*/
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
+
+* { margin:0px; padding:0px; }
+
+body{
+  width: 100%;
+  height: 100%;
+  color:#333;
+}
+a{
+  text-decoration: none;
+}
+.yellow-header{
+  width: 100%;
+  height:380px;
+  background-color:#2c3e50;
+  color:#fafafa;
+}
+
+.branding{
+  float:left;
+}
+
+.login{
+  float:right;
+}
+
+.top-bar::after{
+  display:block;
+  clear:both;
+  content:" ";
+}
+
+.form-wrapper{
+  padding-top:100px;
+  padding-left:20px;
+  margin:auto;
+  text-align:center;
+}
+
+.subtitle{
+  font-size:64px;
+  font-family: 'Luckiest Guy', cursive;
+}
+
+.issue-input{
+  outline:none;
+  border:none;
+  width:450px;
+  height:50px;
+  border-bottom:2px solid #fafafa;
+  background-color: transparent;
+  font-size:36px;
+}
+
+.issue-input::-webkit-input-placeholder{
+  color:#fafafa;
+}
+
+.issue-list{
+  width:60%;
+  margin: auto;
+}
+
+.issue-item{
+  list-style-type: none;
+  border:1px solid #333;
+  background-color:#eee;
+  border:1px solid #e3e3e3;
+  padding:20px;
+  margin:10px;
+}
+
+.shota-vala{
+  height:200px;
+}
+
+.issue-content{
+  margin-top:60px;
+}
+
+.issue{
+  font-size:34px;
+  text-align:center;
+  font-family: 'Luckiest Guy', cursive;
+}
+
+.time{
+  font-size:120px;
+  text-align:center;
+}
+
+.btn, .btn2, .complete{
+  text-align:center;
+}
+
+.btn-item{
+  cursor: pointer;
+  border:none;
+  background-color:#fff;
+  border:2px solid #333;
+  width:80px;
+  height:40px;
+}
+
+.complete{
+  margin-top:50px;
+  width:130px;
+}
+
+button:hover{
+  background-color:#333;
+  color:#fafafa;
+}
+#login-buttons a, .accounts-dialog a {
+  text-decoration: none;
+}
+
+.additional-link-container{
+  color: #333;
+}
+#login-dropdown-list {
+    position: absolute;
+    top: 10px;
+    left: -213px;
+  }

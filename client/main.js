@@ -1,9 +1,28 @@
 //timer functions
-
+Template.taskData.helpers({
+  'complete': function(){
+  postId = this._id;
+  console.log(postId);
+  return Tasks.findOne(postId).complete;
+  },
+  'hrs': function(){
+    postId = this._id;
+    return Tasks.findOne(postId).hours;
+  },
+  'min':function(){
+      postId = this._id;
+      return Tasks.findOne(postId).minutes;
+  },
+  'sec': function(){
+      postId = this._id;
+      return Tasks.findOne(postId).seconds;
+  }
+});
 Template.taskList.helpers({
   tasks()
     {
-      return Tasks.find({}, {sort:{ createdAt: -1}});
+      var owner = Meteor.userId();
+      return Tasks.find({ owner: owner}, {sort:{ createdAt:-1 }});
     },
 });
 
@@ -18,6 +37,7 @@ Template.taskList.events({
       createdAt: new Date(), // current time
       owner: Meteor.userId(),
       username: Meteor.user().username,
+      complete: false,
       hours: "00",
       minutes: "00",
       seconds: "00"

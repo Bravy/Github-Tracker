@@ -1,17 +1,13 @@
-import { Meteor } from 'meteor/meteor';
-
-Meteor.startup(() => {
-  // code to run on server at startup
-});
+import github from 'github'
 
 Meteor.methods({
-  'github':function(){
-    var GITHUB = Npm.require("github"); 
-    var github = new GITHUB();
-    issues = github.getAll({
-      owner:'bravysandhu',
-      repo:'Github-Tracker'
-    })
+  'githubIssues':function(){
+    abc = new github();
+    issues = abc.issues.getForRepo({
+      owner:'inderpreetsingh',
+      repo:'lord-byron'
+    });
+    console.log(issues);
     return issues;
   }
 });

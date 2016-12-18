@@ -46,6 +46,14 @@ Template.taskList.events({
     target.text.value = '';
   },
 
+  'click .gitData'(){
+     event.preventDefault();
+	   userName = $('.usr').val();
+     repo = $('.repo').val();
+     Meteor.call('githubIssues', userName,repo);
+     console.log(userName , repo);
+  },
+
   'click .delete'(){
     Tasks.remove(this._id);
 	},

@@ -1,11 +1,12 @@
+import { Meteor } from 'meteor/meteor';
 import github from 'github'
 
 Meteor.methods({
-  'githubIssues':function(){
+  'githubIssues':function(userName , repo){
     abc = new github();
     issues = abc.issues.getForRepo({
-      owner:'inderpreetsingh',
-      repo:'lord-byron'
+      owner:userName,
+      repo:repo
     });
     console.log(issues);
     return issues;

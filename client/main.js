@@ -44,13 +44,20 @@ Template.taskList.events({
     });
 
     target.text.value = '';
+    Meteor.call('gitRepo',(err,repos) => {
+ if (err) {
+   alert(err);
+ } else {
+   console.log(repos);
+ }
+ });
   },
 
   'click .gitData'(){
      event.preventDefault();
 	   userName = $('.usr').val();
      repo = $('.repo').val();
-     Meteor.call('githubIssues', userName,repo);
+     Meteor.call('githubIssues',userName,repo);
      console.log(userName , repo);
   },
 

@@ -8,7 +8,23 @@ Meteor.methods({
       owner:userName,
       repo:repo
     });
-    console.log(issues);
-    return issues;
+    Tasks.insert({
+      text:issues,
+      createdAt: new Date(), // current time
+      owner: Meteor.userId(),
+      username: Meteor.user().username,
+      complete: false,
+      hours: "00",
+      minutes: "00",
+      seconds: "00"
+    });
+  },
+  'gitRepo':function(){
+    abc = new github();
+    repos = abc.repos.getForUser({
+      username:'bravysandhu@gmail.com'
+    });
+  return repos;
+  console.log(repos);
   }
 });

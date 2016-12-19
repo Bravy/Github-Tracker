@@ -2,29 +2,20 @@ import { Meteor } from 'meteor/meteor';
 import github from 'github'
 
 Meteor.methods({
-  'githubIssues':function(userName , repo){
-    abc = new github();
-    issues = abc.issues.getForRepo({
-      owner:userName,
-      repo:repo
-    });
-    Tasks.insert({
-      text:issues,
-      createdAt: new Date(), // current time
-      owner: Meteor.userId(),
-      username: Meteor.user().username,
-      complete: false,
-      hours: "00",
-      minutes: "00",
-      seconds: "00"
-    });
+  'getIssues':function(userName , repo){
+      myGithub = new github();
+      issues = myGithub.issues.getForRepo({
+        owner:userName,
+        repo:repo
+      });
+     return issues;
   },
-  'gitRepo':function(){
-    abc = new github();
-    repos = abc.repos.getForUser({
-      username:'bravysandhu@gmail.com'
+
+  'getRepo':function(){
+    myGithub = new github();
+    repos = myGithub.repos.getForUser({
+      username:'gauravjeetsingh'
     });
   return repos;
-  console.log(repos);
   }
 });

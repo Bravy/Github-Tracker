@@ -1,0 +1,11 @@
+<template name="mainLayout">
+  <div class="container">
+    <header class="yellow-header">
+      <div class="top-bar">
+      <h1 class="branding">gitTrack</h1>
+      <div class="login">{{>loginButtons}}</div>
+      </div>
+    </header>
+     {{>Template.dynamic template=content}}
+  </div>
+</template>

@@ -18,39 +18,7 @@ var timer = function() {
   t = setTimeout( add, 1000);
 }
 
-Template.taskTimer.helpers({
-   'text': function(){
-    postId = FlowRouter.getParam("postId");
-    console.log(postId);
-    task = Tasks.findOne(postId);
-    console.log("seconds  " + task);
-    return task.text;
-    },
-   'seconds': function(){
-    postId = FlowRouter.getParam("postId");
-    console.log(postId);
-    task = Tasks.findOne(postId);
-    console.log("seconds  " + task);
-    return task.seconds;
-    },
-
-   'minutes': function(){
-    postId = FlowRouter.getParam("postId");
-    console.log(postId);
-    task = Tasks.findOne(postId);
-    console.log("seconds  " + task);
-    return task.minutes;
-    },
-   'hours': function(){
-    postId = FlowRouter.getParam("postId");
-    console.log(postId);
-    task = Tasks.findOne(postId);
-    console.log("seconds  " + task);
-    return task.hours;
-    }
-});
-
-Template.taskTimer.events({
+Template.timer.events({
   'click .start' : function(){
     timer();
   },
@@ -66,7 +34,6 @@ Template.taskTimer.events({
     sec= timeArray[2];
     postId = $.trim($('#post').text());
     console.log(postId);
-    Tasks.update(postId,{$set:{hours:ho,minutes:min,seconds:sec}});
    },
 
  'click .clear' : function(){
@@ -78,7 +45,6 @@ Template.taskTimer.events({
 'click .complete': function(){
   seconds = 0; minutes = 0; hours = 0;
    postId = FlowRouter.getParam("postId");
-   Tasks.update(postId,{$set:{complete:"true"}});
    FlowRouter.go('/');
 }
 

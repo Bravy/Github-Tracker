@@ -2,10 +2,11 @@ import { Meteor } from 'meteor/meteor';
 import github from 'github'
 
 Meteor.methods({
-  'getIssues':function(userName , repo){
+  'getIssues':function(repo){
       myGithub = new github();
+      username = Meteor.user().services.github.username ;
       issues = myGithub.issues.getForRepo({
-        owner:userName,
+        owner:username,
         repo:repo
       });
      return issues;
@@ -13,8 +14,9 @@ Meteor.methods({
 
   'getRepo':function(){
     myGithub = new github();
+    username = Meteor.user().services.github.username ;
     repos = myGithub.repos.getForUser({
-      username:'gauravjeetsingh'
+      username:username
     });
   return repos;
   }

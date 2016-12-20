@@ -19,5 +19,15 @@ Meteor.methods({
       username:username
     });
   return repos;
-  }
+},
+'addIssue':function(repo,title){
+  myGithub = new github();
+  username = Meteor.user().services.github.username ;
+  newIssue = myGithub.issues.create({
+    owner: username,
+    repo:repo,
+    title:title
+  });
+  return newIssue;
+}
 });

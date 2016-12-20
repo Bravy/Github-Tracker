@@ -21,6 +21,7 @@ var timer = function() {
 Template.timer.events({
   'click .start' : function(){
     timer();
+      $('.start').prop('disabled', true);
   },
 
   'click .stop': function() {
@@ -34,17 +35,24 @@ Template.timer.events({
     sec= timeArray[2];
     postId = $.trim($('#post').text());
     console.log(postId);
+    $('.start').prop('disabled', false);
    },
 
  'click .clear' : function(){
    $('#time')[0].textContent = "00:00:00";
    clearTimeout(t);
    seconds = 0; minutes = 0; hours = 0;
+   $('.start').prop('disabled', false);
   },
 
-'click .complete': function(){
+'click .complete': function(event){
+  event.preventDefault();
   seconds = 0; minutes = 0; hours = 0;
-   postId = FlowRouter.getParam("postId");
+  repo = FlowRouter.current().params.repo;
+  number = FlowRouter.current().params.number;
+  body = "Took "+timeArray+ " to complete this issue";
+  console.log(body);
+   Meteor.call("commentTime",repo ,number, body);
    FlowRouter.go('/');
 }
 

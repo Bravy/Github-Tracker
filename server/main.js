@@ -57,6 +57,15 @@ Meteor.methods({
 			 number:number
 		 });
 		 console.log(addComments);
+	 },
+	 'commentTime':function(repo,number,body){
+		 username = Meteor.user().services.github.username;
+		 myGithub.issues.createComment({
+			 owner: username,
+			 repo:repo,
+			 body:body,
+			 number:number
+		 });
 	 }
 
 });

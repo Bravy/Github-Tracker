@@ -17,3 +17,13 @@ Template.issueComment.helpers({
 	return self.issueComment.get();
 }
 });
+
+Template.issueComment.events({
+  'submit .addComment': function(event){
+    event.preventDefault();
+    repo = FlowRouter.current().params.repo;
+    number = FlowRouter.current().params.number;
+    body= $('.cmnt').val();
+    Meteor.call('addComment', repo, number, body);
+}
+});

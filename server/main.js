@@ -44,6 +44,17 @@ Meteor.methods({
      });
      console.log(comments);
      return comments;
-   }
+   },
+
+	 'addComment':function(repo,number,body){
+		 username = Meteor.user().services.github.username;
+		 addComments =myGithub.issues.createComment({
+			 owner: username,
+			 repo:repo,
+			 body:body,
+			 number:number
+		 });
+		 console.log(addComments);
+	 }
 
 });

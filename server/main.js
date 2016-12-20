@@ -6,9 +6,8 @@ var myGithub = new github({debug:true, headers: {
     }});
 
 myGithub.authenticate({
-	type:'basic',
-	username:"username" ,
-	password: "password"
+	type:'oauth',
+	token: "5286262fb6e5711684f01ff8704bf57d1a18196e"
 });
 
 Meteor.methods({

@@ -12,22 +12,21 @@ Meteor.methods({
      return issues;
   },
 
-  'getRepo':function(){
-    myGithub = new github();
-    username = Meteor.user().services.github.username ;
-    repos = myGithub.repos.getForUser({
-      username:username
-    });
-  return repos;
-},
-'addIssue':function(repo,title){
-  myGithub = new github();
-  username = Meteor.user().services.github.username ;
-  newIssue = myGithub.issues.create({
-    owner: username,
-    repo:repo,
-    title:title
-  });
-  return newIssue;
-}
+  'getRepo':function(username){
+      myGithub = new github();
+      repos = myGithub.repos.getForUser({
+         username:username
+      });
+      return repos;
+   },
+
+   'addIssue':function(repo,title){
+      myGithub = new github();
+      username = Meteor.user().services.github.username ;
+      myGithub.issues.create({
+         owner: username,
+         repo:repo,
+         title:title
+      });
+   }
 });

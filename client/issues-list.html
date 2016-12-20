@@ -1,8 +1,12 @@
 <template name ="issueList">
+{{#if loggingIn}}
+   <p>loading...</p>
+{{else}}
   <form class="new-issue">
     <input class="issueTitle" type="text" placeholder="Enter new issue to Repository"/>
   </form>
   {{#each issues}}
     <a class="issue-item" href="/timer"> {{this.title}} </a>
   {{/each}}
+{{/if}}
 </template>

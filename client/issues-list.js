@@ -16,23 +16,18 @@ Template.issueList.helpers({
         }
 	console.log( Template.instance().issueList.get());
 	return Template.instance().issueList.get();
-    }
+    },
+
+    'loggingIn':function() {
+	return Meteor.loggingIn();
+     }
 });
 
 Template.issueList.events({
   'submit .new-issue': function(event){
     event.preventDefault();
-    var self = Template.instance()
-    if(Template.instance().issueList.get() == ""){
     repo = FlowRouter.current().params.repo;
     title = $('.issueTitle').val();
-    Meteor.call('addIssue', repo, title,function(err, newIssue){
-   if(err){ console.log(err) }
-   else{
-      console.log("this is returned from method",newIssue);
-      self.issueList.set(newIssue);
-    }
-  });
-}
+    Meteor.call('addIssue', repo, title);
 }
 });

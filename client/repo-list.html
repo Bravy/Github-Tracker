@@ -1,6 +1,12 @@
 <template name="repoList">
 <h1>Here comes the repo</h1>
-{{#each repositories}}
-  <a class="issue-item" href="/issues/{{this.name}}"> {{this.full_name}} </a>
-{{/each}}
+
+{{#if loggingIn}}
+   <p>loading...</p>
+{{else}}
+   {{#each repositories}}
+      <a class="issue-item" href="/issues/{{this.name}}"> {{this.full_name}} </a>
+   {{/each}}
+{{/if}}
+
 </template>

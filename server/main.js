@@ -22,7 +22,8 @@ Meteor.methods({
 
    'addIssue':function(repo,title){
       myGithub = new github();
-      username = Meteor.user().services.github.username ;
+      username = Meteor.user().services.github.username;
+      console.log(username + " " + repo + " " + title);
       myGithub.issues.create({
          owner: username,
          repo:repo,

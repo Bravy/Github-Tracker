@@ -9,13 +9,21 @@ Template.issueList.helpers({
 	   Meteor.call("getIssues",repo, function(err, issues){
 		if(err){ console.log(err) }
 		else{
+                   if(issues){
 		   console.log(issues);
 		   self.issueList.set(issues);
+                   } else {
+		   self.issueList.set("no issues");
+                   }
 		}
 	   });
         }
-	console.log( Template.instance().issueList.get());
-	return Template.instance().issueList.get();
+	issues =  Template.instance().issueList.get();
+        if(issues == "no issues") {
+            console.log(issues);
+        } else {
+	   return Template.instance().issueList.get();
+       }
     },
 
     'loggingIn':function() {

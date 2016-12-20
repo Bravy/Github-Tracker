@@ -10,9 +10,10 @@ Template.issueComment.helpers({
 	   Meteor.call("getComment",repo,number , function(err, comments){
 		if(err){ console.log(err) }
 		else{
-      console.log(comments);
-    }
-		});
-  }
+			self.issueComment.set(comments);
+    		}
+	    });
+         }
+	return self.issueComment.get();
 }
 });

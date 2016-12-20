@@ -1,3 +1,6 @@
 <template name="issueComment">
   <h1>Previous comments</h1>
+  {{#each comments}}
+	<p>{{this.body}}</p>
+  {{/each}}
 </template>

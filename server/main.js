@@ -1,12 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import github from 'github'
 
-var myGithub = new github({debug:true});
+var myGithub = new github({debug:true, headers: {
+        "user-agent": "Gittrack"
+    }});
 
 myGithub.authenticate({
-	type:'oauth',
-	key: "74843f3cef89ff4952de",
-        secret: "cdb9118dbde711d59c5f8b7f7e1d05cd349c0e0b"
+	type:'basic',
+	username:"username" ,
+	password: "password"
 });
 
 Meteor.methods({

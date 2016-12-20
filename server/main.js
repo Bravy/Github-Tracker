@@ -12,10 +12,10 @@ Meteor.methods({
      return issues;
   },
 
-  'getRepo':function(username){
+  'getRepo':function(name){
       myGithub = new github();
       repos = myGithub.repos.getForUser({
-         username:username
+         username:name
       });
       return repos;
    },

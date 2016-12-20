@@ -2,6 +2,10 @@ Template.issueList.created = function(){
   this.issueList = new ReactiveVar("");
 }
 Template.issueList.helpers({
+  'repo':function(){
+     repo = FlowRouter.current().params.repo;
+     return repo;
+  },
    'issues': function(){
         var self = Template.instance()
         if(Template.instance().issueList.get() == ""){

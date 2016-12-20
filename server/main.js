@@ -29,5 +29,17 @@ Meteor.methods({
          repo:repo,
          title:title
       });
+   },
+   'getComment':function(repo,number){
+    myGithub = new github({debug: true});
+     username = Meteor.user().services.github.username;
+     comments =myGithub.issues.getComments({
+       owner: username,
+       repo:repo,
+       number:number
+     });
+     return comments;
+     console.log(comments);
    }
+
 });

@@ -1,9 +1,16 @@
 import { Meteor } from 'meteor/meteor';
 import github from 'github'
 
+var myGithub = new github({debug:true});
+
+myGithub.authenticate({
+	type:'oauth',
+	key: "74843f3cef89ff4952de",
+        secret: "cdb9118dbde711d59c5f8b7f7e1d05cd349c0e0b"
+});
+
 Meteor.methods({
   'getIssues':function(repo){
-      myGithub = new github();
       username = Meteor.user().services.github.username ;
       issues = myGithub.issues.getForRepo({
         owner:username,
@@ -13,7 +20,6 @@ Meteor.methods({
   },
 
   'getRepo':function(name){
-      myGithub = new github();
       repos = myGithub.repos.getForUser({
          username:name
       });
@@ -21,7 +27,6 @@ Meteor.methods({
    },
 
    'addIssue':function(repo,title){
-      myGithub = new github();
       username = Meteor.user().services.github.username;
       console.log(username + " " + repo + " " + title);
       myGithub.issues.create({
@@ -31,15 +36,14 @@ Meteor.methods({
       });
    },
    'getComment':function(repo,number){
-    myGithub = new github({debug: true});
      username = Meteor.user().services.github.username;
      comments =myGithub.issues.getComments({
        owner: username,
        repo:repo,
        number:number
      });
-     return comments;
      console.log(comments);
+     return comments;
    }
 
 });

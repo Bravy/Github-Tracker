@@ -2,20 +2,20 @@ Template.issueComment.created = function(){
   this.issueComment = new ReactiveVar("");
 }
 Template.issueComment.helpers({
-   'comments': function(){
-        var self = Template.instance()
-        if(Template.instance().issueComment.get() == ""){
-          repo = FlowRouter.current().params.repo;
-          number = FlowRouter.current().params.number;
-	   Meteor.call("getComment",repo,number , function(err, comments){
-		if(err){ console.log(err) }
-		else{
-			self.issueComment.set(comments);
-    		}
-	    });
-         }
-	return self.issueComment.get();
-}
+  'comments': function(){
+    var self = Template.instance()
+    if(Template.instance().issueComment.get() == ""){
+      repo = FlowRouter.current().params.repo;
+      number = FlowRouter.current().params.number;
+      Meteor.call("getComment",repo,number , function(err, comments){
+        if(err){ console.log(err) }
+        else{
+          self.issueComment.set(comments);
+        }
+      });
+    }
+    return self.issueComment.get();
+  }
 });
 
 Template.issueComment.events({
@@ -25,5 +25,5 @@ Template.issueComment.events({
     number = FlowRouter.current().params.number;
     body= $('.cmnt').val();
     Meteor.call('addComment', repo, number, body);
-}
+  }
 });

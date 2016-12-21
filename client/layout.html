@@ -2,18 +2,18 @@
   <div class="container">
     <header class="yellow-header">
       <div class="top-bar">
-      <h1 class="branding">gitTrack</h1>
-      <div class="login">
-       {{#if currentUser}}
-	  <button class="logout-btn">Logout</button>
-       {{else}}
-	  <button class="login-btn">Login with Github</button>
-       {{/if}}
-      </div>
+        <h1 class="branding">gitTrack</h1>
+        <div class="login">
+          {{#if currentUser}}
+          <button class="logout-btn">Logout</button>
+          {{else}}
+          <button class="login-btn">Login with Github</button>
+          {{/if}}
+        </div>
       </div>
     </header>
-     {{#if currentUser}}
-     {{>Template.dynamic template=content}}
-     {{/if}}
+    {{#if currentUser}}
+    {{>Template.dynamic template=content}}
+    {{/if}}
   </div>
 </template>

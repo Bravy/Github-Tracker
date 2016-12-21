@@ -6,10 +6,9 @@
     <input class="issueTitle" type="text" placeholder="Enter new issue to Repository"/>
   </form>
   {{#each issues}}
-  <form action="/timer/{{repo}}/{{this.number}}" class="issue-item">
+  <form class="issue-item">
     <a href="/issues/{{repo}}/{{this.number}}"> {{this.title}} </a>
-    <button>Track Time</button>
-  </form>
+    </form>
   {{/each}}
   {{/if}}
 </template>

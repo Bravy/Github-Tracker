@@ -2,13 +2,18 @@
   {{#if loggingIn}}
   <p>loading...</p>
   {{else}}
+  <div class="issue-container">
   <form class="new-issue">
     <input class="issueTitle" type="text" placeholder="Enter new issue to Repository"/>
   </form>
   {{#each issues}}
-  <form class="issue-item">
-    <a href="/issues/{{repo}}/{{this.number}}"> {{this.title}} </a>
-    </form>
+   <a href="/issues/{{repo}}/{{this.number}}">
+  <span class="issue-item">
+     {{this.title}} 
+    <img class ="next-icon" src="/next.png">
+    </span>
+    </a>
   {{/each}}
+  </div>
   {{/if}}
 </template>

@@ -20,6 +20,11 @@ Template.repoList.helpers({
     return Template.instance().repoList.get();
   },
 
+  'bigAlphabet':function(){
+     name = this.name;
+     return name.split('')[0];
+  },
+
   'loggingIn':function() {
     return Meteor.loggingIn();
   }

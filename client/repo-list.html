@@ -1,12 +1,18 @@
 <template name="repoList">
-  <h1>Here comes the repo</h1>
 
-  {{#if loggingIn}}
-  <p>loading...</p>
-  {{else}}
-  {{#each repositories}}
-  <a class="issue-item" href="/issues/{{this.name}}"> {{this.full_name}} </a>
-  {{/each}}
-  {{/if}}
-
+  <div class="repo-container">
+  <h1 class="page-heading">List of Repositories</h1>
+     {{#if loggingIn}}
+        <p>loading...</p>
+     {{else}}
+        {{#each repositories}}
+          <a class="repo" href="/issues/{{this.name}}">
+           <div class="repo-item">
+              <p class="big-alphabet">{{bigAlphabet}}</p>
+               {{this.name}}
+           </div>
+	   </a>
+        {{/each}}
+    {{/if}}
+  </div>
 </template>

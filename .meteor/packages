@@ -28,3 +28,5 @@ flyandi:reactive-countdown
 kadira:flow-router
 kadira:blaze-layout
 bruz:github-api
+service-configuration
+http
